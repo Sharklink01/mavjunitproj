@@ -6,7 +6,7 @@ node ('slave1') {
 	stage ('Build'){
 		sh "${mvnHome}/bin/mvn clean install"
 	}
-	stage ('Code Quality scan')  {
+	stage ('Sonar scan and Jacoco Coverage')  {
         withSonarQubeEnv(credentialsId: '19f585d4-3420-4b09-869d-79a3ab651f9f') {
         sh "${mvnHome}/bin/mvn sonar:sonar"
         }
